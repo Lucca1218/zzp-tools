@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta name="google-site-verification" content="GPwFvxlGItxNH8K9DAM2Bu31PrR-pp9EMUCKTG4jD5U" />
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self';style-src 'unsafe-inline';script-src 'unsafe-inline';img-src 'self' data:;connect-src 'none';object-src 'none';base-uri 'none';frame-ancestors 'none'">
+<title>ZZP Tools — slimme tools voor zelfstandigen</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#101828;--muted:#667085;--accent:#3157d5;--accent2:#eef2ff;--line:#e4e7ec;--green:#087443}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+header{height:70px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(20px,calc((100% - 1120px)/2));position:sticky;top:0;z-index:5}
+.logo{font-size:21px;font-weight:850}.logo span{color:var(--accent)}.pill{font-size:12px;font-weight:750;background:var(--accent2);color:var(--accent);padding:8px 11px;border-radius:99px}
+main{max-width:1120px;margin:auto;padding:46px 20px 80px}.hero{background:linear-gradient(135deg,#fff,#f0f4ff);border:1px solid var(--line);border-radius:28px;padding:44px;text-align:center}
+h1{font-size:clamp(35px,6vw,60px);letter-spacing:-2.5px;line-height:1.02;margin:0 0 15px}.hero p{max-width:690px;margin:0 auto;color:var(--muted);font-size:18px;line-height:1.6}
+.search{display:block;width:min(650px,100%);margin:26px auto 0;padding:15px 18px;border:1px solid var(--line);border-radius:14px;font-size:16px;outline:0;background:#fff}
+h2{margin:40px 0 17px;font-size:24px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:17px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;transition:.16s;box-shadow:0 6px 18px #10182808}.card:hover{transform:translateY(-3px);box-shadow:0 14px 35px #10182812}
+.icon{font-size:28px}.card h3{margin:12px 0 7px}.card p{color:var(--muted);font-size:14px;line-height:1.5;min-height:42px}button{border:0;background:var(--accent);color:white;font-weight:750;padding:11px 15px;border-radius:10px;cursor:pointer}.secondary{background:var(--accent2);color:var(--accent)}
+.ad{margin:30px 0;border:1px dashed #b8bfce;border-radius:16px;text-align:center;padding:17px;color:#7b8495;font-size:12px;background:#fafbfc}
+.pro{border:1px solid #cbd5ff;background:#f8f9ff}.pro .label{font-size:11px;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:.08em}
+footer{text-align:center;border-top:1px solid var(--line);padding:25px;color:var(--muted);font-size:13px}
+.modal{display:none;position:fixed;inset:0;background:#0008;align-items:center;justify-content:center;padding:18px;z-index:10}.modal.open{display:flex}.box{width:min(560px,100%);background:#fff;border-radius:22px;padding:25px;box-shadow:0 25px 70px #0004;max-height:90vh;overflow:auto}.close{float:right;background:#eee;color:#333}
+label{display:block;font-size:13px;font-weight:700;margin-top:12px}input,select,textarea{width:100%;padding:12px;margin:6px 0 11px;border:1px solid var(--line);border-radius:10px;font:inherit}.result{margin-top:13px;padding:15px;border-radius:12px;background:#f4f6fa;font-weight:700;line-height:1.6}.notice{font-size:12px;color:var(--muted);margin-top:12px}.hidden{display:none!important}
+</style>
+</head>
+<body>
+<header><div class="logo">ZZP<span>Tools</span></div><div class="pill">Gratis • zonder account</div></header>
+<main>
+<section class="hero"><h1>Meer grip op je<br>ZZP-bedrijf.</h1><p>Praktische tools voor tarieven, BTW, omzet, uren en facturen. Snel, eenvoudig en zonder account.</p><input id="search" class="search" placeholder="Zoek bijvoorbeeld: uurtarief, BTW of factuur…" autocomplete="off"></section>
+
+<h2>Populaire tools</h2>
+<div class="grid" id="grid">
+<article class="card" data-name="uurtarief tarief inkomen salaris zzp"><div class="icon">⏱️</div><h3>Uurtarief berekenen</h3><p>Bereken welk uurtarief past bij je gewenste inkomen en kosten.</p><button onclick="openTool('rate')">Open tool</button></article>
+<article class="card" data-name="btw belasting 21 9 0"><div class="icon">🧾</div><h3>BTW-calculator</h3><p>Reken bedragen inclusief en exclusief BTW uit.</p><button onclick="openTool('vat')">Open tool</button></article>
+<article class="card" data-name="omzet winst kosten winstcalculator"><div class="icon">📊</div><h3>Omzet & winst</h3><p>Bekijk omzet, kosten en geschatte winst per maand of jaar.</p><button onclick="openTool('profit')">Open tool</button></article>
+<article class="card" data-name="kilometer km reiskosten auto"><div class="icon">🚗</div><h3>Kilometervergoeding</h3><p>Bereken je zakelijke kilometers en totale vergoeding.</p><button onclick="openTool('km')">Open tool</button></article>
+<article class="card" data-name="urenregistratie uren tijd werk"><div class="icon">🕒</div><h3>Urenregistratie</h3><p>Bereken declarabele uren en je potentiële omzet.</p><button onclick="openTool('hours')">Open tool</button></article>
+<article class="card" data-name="factuur factureren factuurgenerator"><div class="icon">📄</div><h3>Factuur maken</h3><p>Maak snel een eenvoudige factuurtekst om te kopiëren.</p><button onclick="openTool('invoice')">Open tool</button></article>
+<article class="card" data-name="offerte offertecalculator prijs klant"><div class="icon">📝</div><h3>Offertecalculator</h3><p>Bereken uren, materiaal, marge en een voorstelprijs.</p><button onclick="openTool('quote')">Open tool</button></article>
+<article class="card pro" data-name="netto inkomen belasting pro"><div class="label">Pro</div><div class="icon">💶</div><h3>Inkomensplanner</h3><p>Plan je gewenste privé-inkomen en reserveer ruimte voor kosten en belasting.</p><button onclick="openTool('plan')">Open tool</button></article>
+</div>
+
+<div class="ad">Advertentieruimte voor de gratis versie</div>
+<h2>Voor zelfstandigen</h2>
+<p style="color:var(--muted);line-height:1.7;max-width:760px">ZZP Tools is ontworpen als een simpele startplek voor dagelijkse berekeningen. De gratis tools werken lokaal in je browser; er is geen account nodig. Berekeningen rond belasting zijn indicatief en vervangen geen professioneel fiscaal advies.</p>
+</main>
+<footer>ZZP Tools MVP · Gebruik geen gevoelige persoonsgegevens in deze demo.</footer>
+
+<div class="modal" id="modal"><div class="box"><button class="close" onclick="closeTool()">Sluiten</button><h2 id="title" style="margin-top:0"></h2><div id="body"></div></div></div>
+<script>
+const modal=document.getElementById('modal'),title=document.getElementById('title'),body=document.getElementById('body');
+const euro=n=>new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR'}).format(n);
+function openTool(t){
+const m={
+rate:['Uurtarief berekenen',`<label>Gewenst privé-inkomen per maand</label><input id="income" type="number" value="3000"><label>Zakelijke kosten per maand</label><input id="cost" type="number" value="500"><label>Werkbare uren per maand</label><input id="hours" type="number" value="160"><label>Declarabel percentage</label><input id="bill" type="number" value="70"><button onclick="calculateRate()">Berekenen</button><div class="result" id="r"></div><div class="notice">Dit is een eenvoudige indicatie; belasting, vakanties en pensioen kunnen het benodigde tarief beïnvloeden.</div>`],
+vat:['BTW-calculator',`<label>Bedrag</label><input id="amount" type="number" value="100"><label>BTW-tarief</label><select id="vatp"><option value="21">21%</option><option value="9">9%</option><option value="0">0%</option></select><button onclick="vat()">Berekenen</button><div class="result" id="r"></div>`],
+profit:['Omzet & winst',`<label>Omzet per maand</label><input id="rev" type="number" value="5000"><label>Zakelijke kosten per maand</label><input id="cost" type="number" value="1000"><button onclick="calculateProfit()">Berekenen</button><div class="result" id="r"></div>`],
+km:['Kilometervergoeding',`<label>Aantal zakelijke kilometers</label><input id="km" type="number" value="500"><label>Vergoeding per km (€)</label><input id="rate" type="number" value="0.23" step="0.01"><button onclick="calculateKm()">Berekenen</button><div class="result" id="r"></div>`],
+hours:['Urenregistratie',`<label>Declarabele uren</label><input id="h" type="number" value="80"><label>Uurtarief (€)</label><input id="rte" type="number" value="65"><button onclick="hours()">Berekenen</button><div class="result" id="r"></div>`],
+invoice:['Factuur maken',`<label>Jouw bedrijfsnaam</label><input id="from" placeholder="Mijn bedrijf"><label>Klant</label><input id="to" placeholder="Klantnaam"><label>Omschrijving</label><input id="desc" placeholder="Consultancy"><label>Bedrag excl. BTW</label><input id="sum" type="number" value="500"><button onclick="invoice()">Maak factuurtekst</button><div class="result" id="r"></div>`],
+quote:['Offertecalculator',`<label>Uren</label><input id="qh" type="number" value="10"><label>Uurtarief (€)</label><input id="qr" type="number" value="65"><label>Materiaal/overige kosten (€)</label><input id="qm" type="number" value="100"><label>Marge (%)</label><input id="margin" type="number" value="10"><button onclick="quote()">Berekenen</button><div class="result" id="r"></div>`],
+plan:['Inkomensplanner',`<label>Gewenst privé-inkomen per maand</label><input id="pi" type="number" value="3000"><label>Zakelijke kosten per maand</label><input id="pc" type="number" value="500"><label>Reserve voor belasting/pensioen (%)</label><input id="pp" type="number" value="30"><button onclick="plan()">Berekenen</button><div class="result" id="r"></div><div class="notice">Indicatieve planning, geen persoonlijk belastingadvies.</div>`]
+};
+title.textContent=m[t][0];body.innerHTML=m[t][1];modal.classList.add('open')
+}
+function closeTool(){modal.classList.remove('open')}
+function calculateRate(){
+  const incomeEl=document.getElementById('income');
+  const costEl=document.getElementById('cost');
+  const hoursEl=document.getElementById('hours');
+  const billEl=document.getElementById('bill');
+  const result=document.getElementById('r');
+  const income=Number(incomeEl.value)||0;
+  const costs=Number(costEl.value)||0;
+  const totalHours=Number(hoursEl.value)||0;
+  const billablePercent=Number(billEl.value)||0;
+  const billableHours=totalHours*(billablePercent/100);
+  if(billableHours<=0){
+    result.textContent='Vul een aantal werkbare uren en een declarabel percentage groter dan 0 in.';
+    return;
+  }
+  const neededMonthly=income+costs;
+  const hourly=neededMonthly/billableHours;
+  result.textContent=`Benodigd tarief: ${euro(hourly)} per declarabel uur.`;
+}
+function vat(){let x=+amount.value,p=+vatp.value,v=x*p/100;r.textContent=`BTW: ${euro(v)} · Inclusief BTW: ${euro(x+v)}.`}
+function calculateProfit(){
+  const revenue=Number(document.getElementById('rev').value)||0;
+  const costs=Number(document.getElementById('cost').value)||0;
+  const result=document.getElementById('r');
+  const monthly=revenue-costs;
+  result.innerHTML=`Omzet: ${euro(revenue)} per maand<br>Kosten: ${euro(costs)} per maand<br><b>Winst vóór belasting: ${euro(monthly)} per maand</b><br>Op jaarbasis: ${euro(monthly*12)}`;
+}
+function calculateKm(){const kilometers=Number(document.getElementById('km').value)||0;const price=Number(document.getElementById('rate').value)||0;document.getElementById('r').textContent=`Totale kilometervergoeding: ${euro(kilometers*price)}.`}
+function hours(){r.textContent=`Potentiële omzet: ${euro(+h.value*+rte.value)}.`}
+function invoice(){let x=+sum.value,v=x*.21;r.innerHTML=`<b>FACTUUR</b><br>Van: ${from.value||'—'}<br>Aan: ${to.value||'—'}<br>Omschrijving: ${desc.value||'—'}<br>Bedrag excl. BTW: ${euro(x)}<br>BTW 21%: ${euro(v)}<br><b>Totaal: ${euro(x+v)}</b>`}
+function quote(){let base=+qh.value*+qr.value+ +qm.value,total=base*(1+(+margin.value/100));r.textContent=`Kostprijs: ${euro(base)} · Offerteprijs incl. marge: ${euro(total)}.`}
+function plan(){let base=(+pi.value+ +pc.value),reserve=base*(+pp.value/100);r.textContent=`Indicatieve benodigde ruimte: ${euro(base+reserve)} per maand, inclusief ${euro(reserve)} reserve.`}
+document.getElementById('search').addEventListener('input',e=>{let q=e.target.value.toLowerCase();document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hidden',!c.dataset.name.includes(q)))});
+modal.addEventListener('click',e=>{if(e.target===modal)closeTool()});
+</script>
+</body></html>
